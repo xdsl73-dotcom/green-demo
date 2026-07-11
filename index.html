@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국그린태양광</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Malgun Gothic',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#f5f5f5;color:#333;}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(8px);
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+header h2{color:#6dd400;}
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:25px;
+font-weight:bold;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url("https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop")
+center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:#fff;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:24px;
+margin-bottom:40px;
+}
+
+.btn{
+display:inline-block;
+background:#43a047;
+padding:18px 40px;
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-size:20px;
+margin:10px;
+transition:.3s;
+}
+
+.btn:hover{
+background:#2e7d32;
+transform:translateY(-3px);
+}
+
+section{
+padding:100px 8%;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:60px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#fff;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.reason{
+background:#1b5e20;
+color:#fff;
+text-align:center;
+}
+
+.reason ul{
+list-style:none;
+margin-top:30px;
+font-size:22px;
+line-height:2;
+}
+
+.contact{
+background:#fff;
+}
+
+form{
+max-width:700px;
+margin:auto;
+}
+
+input,textarea{
+width:100%;
+padding:18px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:20px;
+background:#43a047;
+border:none;
+color:#fff;
+font-size:20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+footer{
+background:#111;
+color:#fff;
+padding:30px;
+text-align:center;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+header{
+flex-direction:column;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+display:inline-block;
+margin:8px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>☀ 한국그린태양광</h2>
+
+<nav>
+
+<a href="#">회사소개</a>
+<a href="#">사업분야</a>
+<a href="#">정부지원</a>
+<a href="#">시공사례</a>
+<a href="#contact">상담신청</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>대한민국 친환경 에너지의 미래를 설계합니다.</h1>
+
+<p>정부지원 태양광 설치 전문기업</p>
+
+<a class="btn" href="#contact">무료 상담신청</a>
+
+<a class="btn" href="#">정부지원사업</a>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">사업분야</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🏠 주택 태양광</h3>
+<p>친환경 주택 태양광 설치</p>
+</div>
+
+<div class="card">
+<h3>🏭 공장 태양광</h3>
+<p>산업용 발전 시스템</p>
+</div>
+
+<div class="card">
+<h3>🐄 축사 태양광</h3>
+<p>축사 전용 발전사업</p>
+</div>
+
+<div class="card">
+<h3>🔋 ESS</h3>
+<p>에너지 저장 시스템</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="reason">
+
+<h2 class="title">왜 한국그린태양광인가?</h2>
+
+<ul>
+
+<li>✔ 정부지원 전문 컨설팅</li>
+
+<li>✔ 전국 시공 가능</li>
+
+<li>✔ 설계 · 시공 · A/S One Stop</li>
+
+<li>✔ 무료 견적 상담</li>
+
+</ul>
+
+</section>
+
+<section id="contact" class="contact">
+
+<h2 class="title">무료 상담신청</h2>
+
+<form>
+
+<input placeholder="성함">
+
+<input placeholder="연락처">
+
+<input placeholder="설치지역">
+
+<textarea rows="6" placeholder="문의내용"></textarea>
+
+<button>무료 상담 신청</button>
+
+</form>
+
+</section>
+
+<footer>
+
+© 2026 한국그린태양광
+
+</footer>
+
+</body>
+</html>
