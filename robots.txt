@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xdsl73-dotcom.github.io/green-demo/sitemap.xml

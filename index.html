@@ -1,288 +1,671 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>한국그린태양광</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="한국그린태양광 - 태양광 설계, 시공, 금융지원사업 상담 데모 페이지" />
+  <meta name="theme-color" content="#081827" />
+  <meta property="og:title" content="한국그린태양광" />
+  <meta property="og:description" content="대한민국 친환경 에너지의 미래를 설계합니다." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xdsl73-dotcom.github.io/green-demo/" />
+  <title>한국그린태양광 | 태양광 설계·시공·상담</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Malgun Gothic',sans-serif;}
-html{scroll-behavior:smooth;}
-body{background:#f5f5f5;color:#333;}
+  <style>
+    :root{
+      --navy:#071827;
+      --navy-2:#0d2538;
+      --navy-3:#15354e;
+      --gold:#d6ad55;
+      --gold-2:#b88932;
+      --white:#ffffff;
+      --paper:#f7f5f0;
+      --text:#18222c;
+      --muted:#66727d;
+      --line:rgba(14,37,56,.12);
+      --shadow:0 20px 60px rgba(7,24,39,.12);
+      --radius:22px;
+      --max:1180px;
+    }
 
-header{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(8px);
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Pretendard","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+      color:var(--text);
+      background:var(--paper);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{display:block;width:100%;height:auto}
+    button,input,select,textarea{font:inherit}
+    section{scroll-margin-top:84px}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--gold-2);margin-bottom:14px
+    }
+    .eyebrow::before{content:"";width:34px;height:1px;background:currentColor}
+    .section-head{max-width:720px;margin-bottom:46px}
+    .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+    .section-head.center .eyebrow::before{display:none}
+    .section-title{
+      font-size:clamp(34px,4vw,56px);
+      line-height:1.15;letter-spacing:-.045em;color:var(--navy);
+      margin-bottom:18px
+    }
+    .section-desc{color:var(--muted);font-size:18px}
 
-header h2{color:#6dd400;}
+    .header{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transition:.3s ease
+    }
+    .header.scrolled{
+      background:rgba(7,24,39,.92);
+      backdrop-filter:blur(18px);
+      box-shadow:0 8px 30px rgba(0,0,0,.12)
+    }
+    .nav{
+      height:82px;display:flex;align-items:center;justify-content:space-between
+    }
+    .logo{display:flex;align-items:center;gap:13px;color:white}
+    .logo-mark{
+      width:40px;height:40px;border:1px solid rgba(214,173,85,.7);
+      display:grid;place-items:center;transform:rotate(45deg)
+    }
+    .logo-mark span{
+      width:14px;height:14px;border-radius:50%;background:var(--gold);
+      box-shadow:0 0 22px rgba(214,173,85,.65)
+    }
+    .logo-text strong{display:block;font-size:20px;letter-spacing:-.04em}
+    .logo-text small{display:block;font-size:9px;letter-spacing:.28em;color:rgba(255,255,255,.62)}
+    .nav-links{display:flex;align-items:center;gap:30px;color:rgba(255,255,255,.88)}
+    .nav-links a{font-size:14px;font-weight:700;position:relative}
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:-9px;width:0;height:2px;
+      background:var(--gold);transition:.25s
+    }
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{
+      padding:11px 18px;border:1px solid rgba(214,173,85,.55);
+      color:var(--gold)!important
+    }
+    .menu-btn{
+      display:none;width:44px;height:44px;border:0;background:transparent;
+      color:white;font-size:24px;cursor:pointer
+    }
 
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:25px;
-font-weight:bold;
-}
+    .hero{
+      min-height:100vh;position:relative;display:flex;align-items:center;
+      color:white;overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(4,15,25,.92) 0%,rgba(4,15,25,.68) 48%,rgba(4,15,25,.3) 100%),
+        url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=2200&q=85")
+        center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 60%,rgba(7,24,39,.65) 100%);
+      pointer-events:none
+    }
+    .hero-grid{
+      position:absolute;inset:0;opacity:.15;
+      background-image:
+        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+      background-size:80px 80px
+    }
+    .hero-content{
+      position:relative;z-index:2;padding-top:110px;max-width:850px
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:9px;
+      padding:9px 14px;border:1px solid rgba(214,173,85,.42);
+      color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.1em;
+      margin-bottom:24px;background:rgba(7,24,39,.3)
+    }
+    .hero h1{
+      font-size:clamp(46px,6.8vw,88px);
+      line-height:1.03;letter-spacing:-.065em;margin-bottom:24px;
+      text-shadow:0 5px 30px rgba(0,0,0,.2)
+    }
+    .hero h1 span{color:var(--gold)}
+    .hero p{
+      max-width:650px;font-size:clamp(18px,2vw,23px);
+      color:rgba(255,255,255,.78);margin-bottom:38px
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+    .btn{
+      min-height:54px;padding:0 28px;display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;border:1px solid transparent;font-weight:800;transition:.25s;
+      cursor:pointer
+    }
+    .btn-primary{background:var(--gold);color:var(--navy)}
+    .btn-primary:hover{background:#eccb7a;transform:translateY(-3px)}
+    .btn-outline{border-color:rgba(255,255,255,.38);color:white;background:rgba(255,255,255,.04)}
+    .btn-outline:hover{border-color:white;background:rgba(255,255,255,.1)}
+    .hero-stats{
+      position:absolute;z-index:3;left:0;right:0;bottom:0;
+      background:rgba(6,19,31,.86);backdrop-filter:blur(18px);
+      border-top:1px solid rgba(255,255,255,.08)
+    }
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .stat{padding:24px 30px;border-right:1px solid rgba(255,255,255,.1)}
+    .stat:last-child{border-right:0}
+    .stat strong{font-size:29px;color:var(--gold);display:block}
+    .stat span{font-size:13px;color:rgba(255,255,255,.66)}
 
-.hero{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-url("https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2000&auto=format&fit=crop")
-center/cover;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:#fff;
-}
+    .about{padding:120px 0;background:white}
+    .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center}
+    .about-visual{position:relative}
+    .about-main{
+      height:560px;object-fit:cover;box-shadow:var(--shadow)
+    }
+    .about-card{
+      position:absolute;right:-28px;bottom:-28px;width:250px;
+      padding:28px;background:var(--navy);color:white;box-shadow:var(--shadow)
+    }
+    .about-card strong{font-size:44px;color:var(--gold);display:block;line-height:1}
+    .about-card span{font-size:14px;color:rgba(255,255,255,.67)}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:30px 0}
+    .check{display:flex;align-items:center;gap:12px;font-weight:750}
+    .check i{
+      width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(214,173,85,.16);color:var(--gold-2);font-style:normal
+    }
 
-.hero h1{
-font-size:60px;
-margin-bottom:20px;
-}
+    .services{padding:120px 0;background:var(--paper)}
+    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .service-card{
+      background:white;min-height:350px;padding:32px 28px;
+      border:1px solid var(--line);position:relative;overflow:hidden;
+      transition:.3s ease
+    }
+    .service-card::before{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+      background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.3s
+    }
+    .service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+    .service-card:hover::before{transform:scaleX(1)}
+    .service-num{font-size:12px;color:var(--gold-2);font-weight:900;letter-spacing:.15em}
+    .service-icon{font-size:44px;margin:34px 0 22px}
+    .service-card h3{font-size:25px;color:var(--navy);margin-bottom:13px}
+    .service-card p{color:var(--muted);font-size:15px}
+    .service-card a{position:absolute;left:28px;bottom:26px;font-weight:800;color:var(--navy)}
 
-.hero p{
-font-size:24px;
-margin-bottom:40px;
-}
+    .support{
+      padding:120px 0;color:white;
+      background:
+        linear-gradient(90deg,rgba(7,24,39,.96),rgba(13,37,56,.78)),
+        url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=2200&q=85")
+        center/cover fixed;
+    }
+    .support .section-title{color:white}
+    .support .section-desc{color:rgba(255,255,255,.66)}
+    .support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+    .support-card{
+      padding:32px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);backdrop-filter:blur(8px)
+    }
+    .support-card small{color:var(--gold);font-weight:900;letter-spacing:.12em}
+    .support-card h3{font-size:24px;margin:14px 0 10px}
+    .support-card p{color:rgba(255,255,255,.66);font-size:15px}
 
-.btn{
-display:inline-block;
-background:#43a047;
-padding:18px 40px;
-color:#fff;
-text-decoration:none;
-border-radius:50px;
-font-size:20px;
-margin:10px;
-transition:.3s;
-}
+    .portfolio{padding:120px 0;background:white}
+    .portfolio-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-auto-rows:270px;gap:16px}
+    .project{position:relative;overflow:hidden}
+    .project:first-child{grid-row:span 2}
+    .project img{height:100%;object-fit:cover;transition:.55s}
+    .project::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,24,39,.88))
+    }
+    .project:hover img{transform:scale(1.07)}
+    .project-copy{position:absolute;z-index:2;left:24px;bottom:22px;color:white}
+    .project-copy small{color:var(--gold);font-weight:800}
+    .project-copy h3{font-size:22px;margin-top:4px}
 
-.btn:hover{
-background:#2e7d32;
-transform:translateY(-3px);
-}
+    .process{padding:120px 0;background:var(--paper)}
+    .process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .step{
+      background:white;border:1px solid var(--line);padding:30px 24px;min-height:220px;
+      position:relative
+    }
+    .step span{
+      width:42px;height:42px;display:grid;place-items:center;border-radius:50%;
+      background:var(--navy);color:var(--gold);font-weight:900;margin-bottom:24px
+    }
+    .step h3{font-size:20px;margin-bottom:8px;color:var(--navy)}
+    .step p{font-size:14px;color:var(--muted)}
 
-section{
-padding:100px 8%;
-}
+    .consult{padding:120px 0;background:var(--navy);color:white}
+    .consult-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+    .consult .section-title{color:white}
+    .consult .section-desc{color:rgba(255,255,255,.66)}
+    .contact-list{margin-top:32px;display:grid;gap:14px}
+    .contact-item{padding:17px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .contact-item small{display:block;color:var(--gold);font-weight:800}
+    .contact-item strong{font-size:22px}
+    .form-card{background:white;color:var(--text);padding:38px;box-shadow:var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:13px;font-weight:800;color:var(--navy)}
+    .field input,.field select,.field textarea{
+      width:100%;border:1px solid #dbe0e4;background:#fbfbfa;
+      padding:15px;outline:none;transition:.2s
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:var(--gold-2);box-shadow:0 0 0 3px rgba(214,173,85,.14)
+    }
+    .agree{grid-column:1/-1;font-size:13px;color:var(--muted)}
+    .submit{grid-column:1/-1;width:100%;border:0;min-height:56px;background:var(--gold);font-weight:900;cursor:pointer}
+    .submit:hover{background:#e6c46f}
+    .form-note{grid-column:1/-1;font-size:12px;color:#8a949d}
 
-.title{
-text-align:center;
-font-size:40px;
-margin-bottom:60px;
-}
+    .footer{background:#03101b;color:rgba(255,255,255,.58);padding:52px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+    .footer h3{color:white;font-size:23px;margin-bottom:10px}
+    .footer p{font-size:13px}
+    .footer-links{display:flex;justify-content:flex-end;gap:20px;color:rgba(255,255,255,.75);font-size:13px}
+    .copyright{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:12px}
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
+    .floating{
+      position:fixed;right:22px;bottom:22px;z-index:900;
+      display:flex;flex-direction:column;gap:10px
+    }
+    .float-btn{
+      width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:21px;font-weight:900
+    }
+    .float-phone{background:var(--gold);color:var(--navy)}
+    .float-top{background:white;color:var(--navy);border:1px solid var(--line)}
 
-.card{
-background:#fff;
-padding:40px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.12);
-transition:.3s;
-}
+    .reveal{opacity:0;transform:translateY(32px);transition:.7s ease}
+    .reveal.show{opacity:1;transform:none}
 
-.card:hover{
-transform:translateY(-10px);
-}
+    .toast{
+      position:fixed;left:50%;bottom:30px;transform:translate(-50%,30px);
+      background:white;color:var(--navy);padding:16px 22px;z-index:2000;
+      box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
 
-.reason{
-background:#1b5e20;
-color:#fff;
-text-align:center;
-}
-
-.reason ul{
-list-style:none;
-margin-top:30px;
-font-size:22px;
-line-height:2;
-}
-
-.contact{
-background:#fff;
-}
-
-form{
-max-width:700px;
-margin:auto;
-}
-
-input,textarea{
-width:100%;
-padding:18px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-}
-
-button{
-width:100%;
-padding:20px;
-background:#43a047;
-border:none;
-color:#fff;
-font-size:20px;
-border-radius:10px;
-cursor:pointer;
-}
-
-footer{
-background:#111;
-color:#fff;
-padding:30px;
-text-align:center;
-}
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:38px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-header{
-flex-direction:column;
-}
-
-nav{
-margin-top:15px;
-}
-
-nav a{
-display:inline-block;
-margin:8px;
-}
-
-}
-</style>
+    @media(max-width:980px){
+      .nav-links{
+        position:fixed;top:82px;left:0;right:0;background:rgba(7,24,39,.98);
+        flex-direction:column;align-items:stretch;padding:24px 28px;
+        transform:translateY(-130%);transition:.3s;z-index:-1
+      }
+      .nav-links.open{transform:none}
+      .menu-btn{display:block}
+      .about-grid,.consult-grid{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .support-grid{grid-template-columns:1fr}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .portfolio-grid{grid-template-columns:1fr 1fr}
+      .project:first-child{grid-row:auto;grid-column:1/-1}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat:nth-child(2){border-right:0}
+      .hero{padding-bottom:132px}
+    }
+    @media(max-width:640px){
+      .container{width:min(100% - 26px,var(--max))}
+      .nav{height:72px}
+      .nav-links{top:72px}
+      .hero-content{padding-top:90px}
+      .hero h1{font-size:45px}
+      .hero p{font-size:17px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .btn{width:100%}
+      .hero-stats{position:relative;margin-top:auto}
+      .hero{display:block;padding-top:120px;min-height:auto}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .stat{padding:18px 15px}
+      .stat strong{font-size:23px}
+      .about,.services,.support,.portfolio,.process,.consult{padding:82px 0}
+      .about-main{height:390px}
+      .about-card{right:12px;bottom:-24px}
+      .checks{grid-template-columns:1fr}
+      .service-grid,.portfolio-grid,.process-grid{grid-template-columns:1fr}
+      .project:first-child{grid-column:auto}
+      .project{height:250px}
+      .form-grid{grid-template-columns:1fr}
+      .form-card{padding:24px 18px}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start;flex-wrap:wrap}
+      .section-title{font-size:36px}
+    }
+  </style>
 </head>
 
 <body>
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="한국그린태양광 홈">
+      <div class="logo-mark"><span></span></div>
+      <div class="logo-text">
+        <strong>한국그린태양광</strong>
+        <small>KOREA GREEN SOLAR</small>
+      </div>
+    </a>
 
-<header>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">회사소개</a>
+      <a href="#services">사업분야</a>
+      <a href="#support">금융지원사업</a>
+      <a href="#portfolio">시공사례</a>
+      <a href="#process">진행절차</a>
+      <a href="#consult" class="nav-cta">무료상담</a>
+    </nav>
 
-<h2>☀ 한국그린태양광</h2>
-
-<nav>
-
-<a href="#">회사소개</a>
-<a href="#">사업분야</a>
-<a href="#">정부지원</a>
-<a href="#">시공사례</a>
-<a href="#contact">상담신청</a>
-
-</nav>
-
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">☰</button>
+  </div>
 </header>
 
-<section class="hero">
+<main>
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">2026 태양광 금융지원사업 상담</div>
+      <h1>에너지의 미래를<br><span>설계하고 완성합니다.</span></h1>
+      <p>입지 검토부터 설계, 시공, 유지관리까지. 한국그린태양광이 태양광 사업의 전 과정을 함께합니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#consult">무료 상담 신청 →</a>
+        <a class="btn btn-outline" href="#services">사업분야 보기</a>
+      </div>
+    </div>
 
-<div>
+    <div class="hero-stats">
+      <div class="container stats-grid">
+        <div class="stat"><strong data-count="365">0</strong><span>연중 상담 운영</span></div>
+        <div class="stat"><strong data-count="100">0</strong><span>전국 상담 가능</span></div>
+        <div class="stat"><strong data-count="4">0</strong><span>핵심 사업 분야</span></div>
+        <div class="stat"><strong data-count="1">0</strong><span>ONE-STOP 솔루션</span></div>
+      </div>
+    </div>
+  </section>
 
-<h1>대한민국 친환경 에너지의 미래를 설계합니다.</h1>
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-visual reveal">
+        <img class="about-main" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=85" alt="태양광 발전시설">
+        <div class="about-card">
+          <strong>ONE</strong>
+          <span>상담부터 유지관리까지 한 번에</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">About us</span>
+        <h2 class="section-title">신뢰할 수 있는<br>태양광 파트너</h2>
+        <p class="section-desc">설치 환경과 사업 목적을 먼저 이해하고, 과장 없는 제안과 체계적인 공정관리로 고객에게 맞는 태양광 솔루션을 제공합니다.</p>
+        <div class="checks">
+          <div class="check"><i>✓</i>현장 맞춤형 설계</div>
+          <div class="check"><i>✓</i>전국 상담 가능</div>
+          <div class="check"><i>✓</i>정부지원 상담</div>
+          <div class="check"><i>✓</i>시공 후 유지관리</div>
+        </div>
+        <a class="btn btn-primary" href="#consult">상담 예약하기</a>
+      </div>
+    </div>
+  </section>
 
-<p>정부지원 태양광 설치 전문기업</p>
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Business</span>
+        <h2 class="section-title">사업분야</h2>
+        <p class="section-desc">주택부터 공장, 축사, 상업시설까지 현장에 맞는 설비를 제안합니다.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <div class="service-num">SERVICE 01</div>
+          <div class="service-icon">⌂</div>
+          <h3>주택 태양광</h3>
+          <p>전기요금 절감과 친환경 주거환경을 위한 주택 맞춤형 태양광 시스템.</p>
+          <a href="#consult">상담하기 →</a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num">SERVICE 02</div>
+          <div class="service-icon">▦</div>
+          <h3>공장 태양광</h3>
+          <p>넓은 유휴 지붕을 활용하여 전력비 절감과 기업 ESG 경쟁력을 높입니다.</p>
+          <a href="#consult">상담하기 →</a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num">SERVICE 03</div>
+          <div class="service-icon">△</div>
+          <h3>축사 태양광</h3>
+          <p>축사 구조와 음영 조건을 고려한 안정적인 발전사업 설계 및 시공.</p>
+          <a href="#consult">상담하기 →</a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-num">SERVICE 04</div>
+          <div class="service-icon">▣</div>
+          <h3>상업용·ESS</h3>
+          <p>상업시설 태양광과 에너지저장장치를 연계한 효율적인 전력 솔루션.</p>
+          <a href="#consult">상담하기 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<a class="btn" href="#contact">무료 상담신청</a>
+  <section class="support" id="support">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Financial support</span>
+        <h2 class="section-title">2026 금융지원사업</h2>
+        <p class="section-desc">사업 유형과 설치 조건에 따라 적용 가능한 지원제도를 검토하고 신청 방향을 안내합니다.</p>
+      </div>
+      <div class="support-grid">
+        <article class="support-card reveal">
+          <small>01 / CONSULTING</small>
+          <h3>사전 사업성 검토</h3>
+          <p>설치면적, 일사량, 전력 사용량 등을 토대로 사업 가능성을 검토합니다.</p>
+        </article>
+        <article class="support-card reveal">
+          <small>02 / SUPPORT</small>
+          <h3>지원사업 안내</h3>
+          <p>현장과 사업자 조건에 맞는 금융지원·보급사업 정보를 안내합니다.</p>
+        </article>
+        <article class="support-card reveal">
+          <small>03 / MANAGEMENT</small>
+          <h3>신청·시공 관리</h3>
+          <p>준비서류, 일정, 공정 단계까지 한눈에 확인할 수 있도록 지원합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<a class="btn" href="#">정부지원사업</a>
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Portfolio</span>
+        <h2 class="section-title">시공사례</h2>
+        <p class="section-desc">샘플 페이지용 이미지이며 실제 시공자료로 교체할 수 있습니다.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="project reveal">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=85" alt="대규모 태양광 시설">
+          <div class="project-copy"><small>INDUSTRIAL</small><h3>공장 지붕형 태양광</h3></div>
+        </article>
+        <article class="project reveal">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1000&q=85" alt="주택 태양광">
+          <div class="project-copy"><small>RESIDENTIAL</small><h3>주택용 태양광</h3></div>
+        </article>
+        <article class="project reveal">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1000&q=85" alt="상업용 태양광">
+          <div class="project-copy"><small>COMMERCIAL</small><h3>상업시설 태양광</h3></div>
+        </article>
+        <article class="project reveal">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1000&q=85" alt="에너지 시설">
+          <div class="project-copy"><small>ENERGY</small><h3>에너지 통합설비</h3></div>
+        </article>
+        <article class="project reveal">
+          <img src="https://images.unsplash.com/photo-1545208942-e1c9c9165243?auto=format&fit=crop&w=1000&q=85" alt="태양광 패널">
+          <div class="project-copy"><small>MAINTENANCE</small><h3>유지관리·점검</h3></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Process</span>
+        <h2 class="section-title">진행절차</h2>
+        <p class="section-desc">상담부터 준공 이후 관리까지 체계적으로 진행합니다.</p>
+      </div>
+      <div class="process-grid">
+        <article class="step reveal"><span>01</span><h3>상담 접수</h3><p>지역, 설치유형, 희망사항을 확인합니다.</p></article>
+        <article class="step reveal"><span>02</span><h3>현장 검토</h3><p>구조, 면적, 음영, 전기환경을 점검합니다.</p></article>
+        <article class="step reveal"><span>03</span><h3>설계·견적</h3><p>현장에 맞는 용량과 예상비용을 제안합니다.</p></article>
+        <article class="step reveal"><span>04</span><h3>시공·준공</h3><p>안전기준에 맞춰 설치와 검수를 진행합니다.</p></article>
+        <article class="step reveal"><span>05</span><h3>유지관리</h3><p>운영 중 점검과 사후관리를 지원합니다.</p></article>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <section class="consult" id="consult">
+    <div class="container consult-grid">
+      <div class="reveal">
+        <span class="eyebrow">Free consultation</span>
+        <h2 class="section-title">무료 상담 신청</h2>
+        <p class="section-desc">기본정보를 남겨주시면 확인 후 상담을 안내해드립니다.</p>
+        <div class="contact-list">
+          <div class="contact-item"><small>대표 상담</small><strong>0000-0000</strong></div>
+          <div class="contact-item"><small>이메일</small><strong>consult@example.com</strong></div>
+          <div class="contact-item"><small>상담시간</small><strong>평일 09:00 - 18:00</strong></div>
+        </div>
+      </div>
 
-<section>
+      <form class="form-card reveal" id="consultForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">성함 *</label>
+            <input id="name" name="name" required placeholder="성함을 입력해주세요">
+          </div>
+          <div class="field">
+            <label for="phone">연락처 *</label>
+            <input id="phone" name="phone" required placeholder="010-0000-0000">
+          </div>
+          <div class="field">
+            <label for="region">설치지역</label>
+            <input id="region" name="region" placeholder="예: 경기도 평택시">
+          </div>
+          <div class="field">
+            <label for="type">설치유형</label>
+            <select id="type" name="type">
+              <option>선택해주세요</option>
+              <option>주택 태양광</option>
+              <option>공장 태양광</option>
+              <option>축사 태양광</option>
+              <option>상업용 태양광</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">문의내용</label>
+            <textarea id="message" name="message" rows="5" placeholder="설치 장소와 궁금한 내용을 적어주세요"></textarea>
+          </div>
+          <label class="agree"><input type="checkbox" required> 개인정보 수집 및 상담 연락에 동의합니다.</label>
+          <button class="submit" type="submit">무료 상담 신청하기</button>
+          <p class="form-note">현재 데모 페이지라 입력정보는 서버로 전송되지 않습니다. 실제 운영 시 네이버웍스 메일 또는 폼 서비스로 연결할 수 있습니다.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
 
-<h2 class="title">사업분야</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>🏠 주택 태양광</h3>
-<p>친환경 주택 태양광 설치</p>
-</div>
-
-<div class="card">
-<h3>🏭 공장 태양광</h3>
-<p>산업용 발전 시스템</p>
-</div>
-
-<div class="card">
-<h3>🐄 축사 태양광</h3>
-<p>축사 전용 발전사업</p>
-</div>
-
-<div class="card">
-<h3>🔋 ESS</h3>
-<p>에너지 저장 시스템</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="reason">
-
-<h2 class="title">왜 한국그린태양광인가?</h2>
-
-<ul>
-
-<li>✔ 정부지원 전문 컨설팅</li>
-
-<li>✔ 전국 시공 가능</li>
-
-<li>✔ 설계 · 시공 · A/S One Stop</li>
-
-<li>✔ 무료 견적 상담</li>
-
-</ul>
-
-</section>
-
-<section id="contact" class="contact">
-
-<h2 class="title">무료 상담신청</h2>
-
-<form>
-
-<input placeholder="성함">
-
-<input placeholder="연락처">
-
-<input placeholder="설치지역">
-
-<textarea rows="6" placeholder="문의내용"></textarea>
-
-<button>무료 상담 신청</button>
-
-</form>
-
-</section>
-
-<footer>
-
-© 2026 한국그린태양광
-
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>한국그린태양광</h3>
+        <p>대표자 홍길동 · 사업자등록번호 000-00-00000</p>
+        <p>주소: 회사 주소 입력 · 대표전화: 0000-0000 · 이메일: consult@example.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">회사소개</a>
+        <a href="#services">사업분야</a>
+        <a href="#consult">상담신청</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 KOREA GREEN SOLAR. ALL RIGHTS RESERVED. · DEMO SITE</div>
+  </div>
 </footer>
 
+<div class="floating">
+  <a class="float-btn float-phone" href="#consult" aria-label="상담 신청">☎</a>
+  <a class="float-btn float-top" href="#home" aria-label="맨 위로">↑</a>
+</div>
+
+<div class="toast" id="toast">상담 신청 데모가 완료되었습니다.</div>
+
+<script>
+  const header = document.getElementById("header");
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+  const form = document.getElementById("consultForm");
+  const toast = document.getElementById("toast");
+
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 40);
+  });
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    menuBtn.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+  }, {threshold: 0.14});
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  let counted = false;
+  const stats = document.querySelector(".hero-stats");
+  const countObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      document.querySelectorAll("[data-count]").forEach(el => {
+        const target = Number(el.dataset.count);
+        let value = 0;
+        const step = Math.max(1, Math.ceil(target / 45));
+        const timer = setInterval(() => {
+          value += step;
+          if (value >= target) {
+            value = target;
+            clearInterval(timer);
+          }
+          el.textContent = value + (target === 100 ? "%" : target === 365 ? "일" : "");
+        }, 28);
+      });
+    }
+  }, {threshold: .4});
+  countObserver.observe(stats);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    localStorage.setItem("greenSolarDemoConsult", JSON.stringify({...data, savedAt:new Date().toISOString()}));
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2600);
+    form.reset();
+  });
+</script>
 </body>
 </html>
